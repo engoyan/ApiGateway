@@ -1,2 +1,4 @@
-Allows for configuration of Zend\Http\Client via a config file and supplies magic call convienence methods for all Verbs
+Laravel 4 Wrapper for Zend\Http\Client a a gateway for using a remote API as your data store
 ------------------------
+
+1) allows for configuration via a config file
