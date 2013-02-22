@@ -88,7 +88,7 @@ class ApiGateway extends Client  implements ApiRunnerInterface{
 
         $response = $this->run();
         
-        if ($this->getMethod() != 'DELETE') {
+        if ($this->getMethod() == 'DELETE') {
             return $response;
         }
     
@@ -107,7 +107,15 @@ class ApiGateway extends Client  implements ApiRunnerInterface{
     
     public function run()
     {
-        return $this->send();    
+        
+        $response = $this->send(); 
+        
+        if($response->isSuccess()){
+            return json_decode($response->getBody());
+        }else{
+            $error = json_decode($response->getBody());
+            throw new ApiGatewayException($error);
+        }
     } 
     
     
