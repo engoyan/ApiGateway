@@ -5,7 +5,7 @@
 */
 
 return array(
-    'host' => 'http://api.staging.eventbidz.com',
+    'host' => 'http://example.com',
     'site-root' => 'site',
     'auth' => 'auth',
     'adapter' => '\Zend\Http\Client\Adapter\Curl',
