@@ -5,6 +5,8 @@ Laravel 4 Wrapper for Zend\Http\Client a gateway for using a remote API as your 
 
 2) provides magic methods for all verbs
 
+3) implements ApiRunnerInterface for dependancy injection
+
 NOTE: assumes plural endpoint contains the data portion of the response
 
 e.g. 
