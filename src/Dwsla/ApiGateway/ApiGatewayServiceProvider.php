@@ -30,17 +30,12 @@ class ApiGatewayServiceProvider extends ServiceProvider {
 	{
         $this->app['api-gateway'] = $this->app->share(function($app){
             
-            $config = $app['config']['api-gateway::gateway'];
-            $uri = ($config['site-root']) ?  $config['host'] ."/" . $config['site-root'] : $config['host'];
-            $auth = $config['auth'];
-            $adapter = $config['adapter'];
-            
             $Gateway = new ApiGateway();
-            $Gateway->setUri($uri);
-            $Gateway->setAdapter($adapter);
+            $config = $app['config']['api-gateway::gateway'];
             
-            if ($auth) {
-                $Gateway->setHeaders(array('Authentication: ' . $auth));
+            foreach ($config as $k => $v) {
+                $setter = 'set' . ucfirst($k);
+                $Gateway->$setter($v);
             }
             
             return $Gateway;

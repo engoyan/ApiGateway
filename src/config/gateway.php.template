@@ -5,11 +5,9 @@
 */
 
 return array(
-    'host' => 'http://example.com',
-    'site-root' => 'site',
-    'auth' => 'auth',
+    'uri' => 'http://example.com',
+    'headers' => array('Authentication: auth'),
     'adapter' => '\Zend\Http\Client\Adapter\Curl',
-    'config' => array(),
 );
 
 ?>
