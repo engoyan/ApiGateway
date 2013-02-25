@@ -84,7 +84,7 @@ class ApiGateway extends Client  implements ApiRunnerInterface{
         
         } 
         
-        return $this->getRequest();
+        //return $this->getRequest();
 
         $response = $this->run();
         
