@@ -70,7 +70,11 @@ class ApiGateway extends Client  implements ApiRunnerInterface{
             
             $this->setMethod(Request::METHOD_OPTIONS);
             $endpoint = strtolower(substr($name, 7));
-            $this->extendPath($endpoint);
+            $path = $endpoint;
+            if (isset($args[0])) {
+                $path = $path . "/" . $args[0];    
+            }
+            $this->getUri()->setPath($path);
                                               
         } elseif (strstr($name, 'delete')) {
             
