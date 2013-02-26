@@ -18,7 +18,7 @@ class ApiGateway extends Client  implements ApiRunnerInterface{
         if (method_exists($this,$name)) {
             return $this->$name;
         }
-
+        $isSingular = false;
         if (strstr($name, 'get')) {
 
             if (isset($args[0]) && !in_array(gettype($args[0]),array('string','integer'))){
@@ -92,7 +92,7 @@ class ApiGateway extends Client  implements ApiRunnerInterface{
             return $response;
         }
     
-        if ($isSingular || $this->getMethod() != 'GET') {
+        if (($isSingular || $this->getMethod() != 'GET') && isset($response->$endpoint))  {
             $response = $response->$endpoint;
             return (isset($response[0])) ? $response[0] : null;
         }
